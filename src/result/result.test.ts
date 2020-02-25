@@ -1,4 +1,6 @@
-import { ok, err, Ok, Err } from './result'
+import { ok, err } from './result'
+import { Ok } from './Ok'
+import { Err } from './Err'
 
 describe('ok', () => {
   it('should create an Ok value', () => {
@@ -13,7 +15,7 @@ describe('ok', () => {
       const res = ok('hello')
       expect((res as Ok<string>).value).toBe('hello')
 
-      expect((res.map(v => v.length) as Ok<number>).value).toBe(5)
+      expect(((res as Ok<string>).map(v => v.length) as Ok<number>).value).toBe(5)
     })
   })
 })

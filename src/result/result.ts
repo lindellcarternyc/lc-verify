@@ -1,26 +1,11 @@
-export class Ok<A> {
-  constructor(readonly value: A) { }
+import { Ok } from './Ok'
+import { Err } from './Err'
 
-  map<B>(fn: (_: A) => B): Result<B> {
-    return new Ok(fn(this.value))
-  }
-
-  isOk(): this is Ok<A> {
-    return true
-  }
+export abstract class ResultClass<T> {
+  abstract map<U>(fn: (_: T) => U): ResultClass<U>
+  abstract isOk(): boolean
 }
 
-export class Err<A> {
-  constructor(readonly error: string) { }
-
-  map<B>(_: (_: A) => B): Result<B> {
-    return new Err(this.error)
-  }
-
-  isOk<A>(): this is Ok<A> {
-    return false
-  }
-}
 
 export type Result<A> = Ok<A> | Err<A>
 
