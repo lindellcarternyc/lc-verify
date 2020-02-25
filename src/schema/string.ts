@@ -10,7 +10,7 @@ interface StringOptions {
   pattern?: RegExp
   equals?: string
 }
-const string = (options: StringOptions = {}) => new Schema<string>(value => {
+const str = (options: StringOptions = {}) => new Schema<string>(value => {
   const { minLength, maxLength, pattern, equals } = options
 
   if (typeof value === 'string') {
@@ -31,4 +31,4 @@ const string = (options: StringOptions = {}) => new Schema<string>(value => {
   return err(stringError(value))
 })
 
-export default string
+export default str
