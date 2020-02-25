@@ -1,1 +1,10 @@
 node_modules
+
+# Yarn error logs
+yarn-error.*
+
+# Build artifacts
+/lib
+
+# Small scripts
+/scripts
