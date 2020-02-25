@@ -10,7 +10,7 @@ interface NumberOptions {
 }
 
 const numberError = primitiveError('number')
-const number = (options: NumberOptions = {}): Schema<number> => new Schema<number>(value => {
+const num = (options: NumberOptions = {}): Schema<number> => new Schema<number>(value => {
   const { min, max, between, equals } = options
 
   if (typeof value === 'number') {
@@ -27,11 +27,11 @@ const number = (options: NumberOptions = {}): Schema<number> => new Schema<numbe
       return err(`${JSON.stringify(value)} must equal ${equals}`)
     } 
     if (between !== undefined) {
-      return number({ min: between[0], max: between[1] }).validate(value)
+      return num({ min: between[0], max: between[1] }).validate(value)
     }
     return ok(value)
   }
   return err(numberError(value))
 })
 
-export default number
+export default num
