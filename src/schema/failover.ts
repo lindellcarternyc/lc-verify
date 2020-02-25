@@ -27,9 +27,9 @@ function failover<T>(schema: Schema<T>, defaultValue?: T): ((_: T) => Schema<T>)
     defaultValue: defaultValue!
   })
 
-  return (defaultValue) => makeFailover({
+  return value => makeFailover({
     schema,
-    defaultValue
+    defaultValue: value
   })
 }
 
