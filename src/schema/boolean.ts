@@ -2,7 +2,7 @@ import { Schema } from './schema'
 import { ok, err } from '../result/result'
 import { primitiveError } from '../errors/errors'
 
-const boolean = (): Schema<boolean> => {
+const bool = (): Schema<boolean> => {
   return new Schema(value => {
     if (value === true || value === false) {
       return ok(value)
@@ -11,4 +11,4 @@ const boolean = (): Schema<boolean> => {
   })
 }
 
-export default boolean
+export default bool
