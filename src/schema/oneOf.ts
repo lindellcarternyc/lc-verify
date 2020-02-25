@@ -6,7 +6,7 @@ const oneOfError = (schemaName: string) => (value: any): string => {
     value
   )} can't be decoded with provided decoders`
 }
-const oneOf = <T extends any>(schemaName: string, schemaList: Array<Schema<T>>): Schema<T> => {
+const oneOf = <T extends any>(schemaName: string, schemaList: Schema<T>[]): Schema<T> => {
   const makeError = oneOfError(schemaName)
 
   return new Schema(value => {
